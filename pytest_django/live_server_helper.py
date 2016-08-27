@@ -19,7 +19,7 @@ class LiveServer(object):
         for conn in connections.all():
             # If using in-memory sqlite databases, pass the connections to
             # the server thread.
-            if (conn.settings_dict['ENGINE'] == 'django.db.backends.sqlite3' and
+            if (conn.settings_dict['ENGINE'].endswith(".sqlite3") and
                     conn.settings_dict['NAME'] == ':memory:'):
                 # Explicitly enable thread-shareability for this connection
                 conn.allow_thread_sharing = True

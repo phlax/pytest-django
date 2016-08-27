@@ -32,7 +32,7 @@ def django_db_modify_db_settings_xdist_suffix(request):
             test_name = None
 
         if not test_name:
-            if db_settings['ENGINE'] == 'django.db.backends.sqlite3':
+            if db_settings['ENGINE'].endswith(".sqlite3"):
                 return ':memory:'
             else:
                 test_name = 'test_{}'.format(db_settings['NAME'])

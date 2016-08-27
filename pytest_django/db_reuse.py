@@ -11,7 +11,7 @@ def test_database_exists_from_previous_run(connection):
 
     # When using a real SQLite backend (via TEST_NAME), check if the file
     # exists, because it gets created automatically.
-    if connection.settings_dict['ENGINE'] == 'django.db.backends.sqlite3':
+    if connection.settings_dict['ENGINE'].endswith(".sqlite3"):
         if not os.path.exists(test_db_name):
             return False
 
